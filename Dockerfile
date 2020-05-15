@@ -50,3 +50,9 @@ RUN chmod 755 /oracledb_exporter
 EXPOSE 9161
 
 ENTRYPOINT ["/oracledb_exporter"]
+
+FROM youngjojung/oracledb_exporter:latest
+
+COPY custom-metrics.toml /
+
+ENTRYPOINT ["/oracledb_exporter", "-custom.metrics", "/custom-metrics.toml"]
